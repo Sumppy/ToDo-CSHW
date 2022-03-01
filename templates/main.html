@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+        <script type="application/javascript" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+<div class="add-task">
+    <form action="/add-task" method="post">
+        <input type="text" name="new-task" value="New Task">
+        <button type="submit" id="add-button">Add New Task</button>
+    </form>
+</div>
+<div class="tasks">
+    <table id="list">
+        {% for key in tasks.keys() %}
+        <tr id="{{ key }}">
+            <td>
+                <input class="checkbox" data-row="{{ key }}" type="checkbox">
+            </td>
+            <td>
+                <div class="task" data-row="{{ key }}">{{ tasks.get(key) }}</div>
+            </td>
+            <td>
+                <form action="/remove-task?task-to-remove={{ key }}" method="post">
+                    <button class="delete-button" data-row="{{ key }}" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

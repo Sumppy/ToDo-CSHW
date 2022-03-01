@@ -20,6 +20,13 @@ def add_task():
     return redirect("/")
 
 
+@app.route("/remove-task", methods=["GET", "POST"])
+def remove_task():
+    if request.method == "POST":
+        tasks.pop(int(request.args.get('task-to-remove')))
+    return redirect("/")
+
+
 if __name__ == '__main__':
     app.run(
         debug=True

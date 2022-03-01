@@ -22,7 +22,9 @@
                 <div class="task" data-row="{{ key }}">{{ tasks.get(key) }}</div>
             </td>
             <td>
-                <button class="delete-button" data-row="{{ key }}" type="submit">Delete</button>
+                <form action="/remove-task?task-to-remove={{ key }}" method="post">
+                    <button class="delete-button" data-row="{{ key }}" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
         {% endfor %}

@@ -40,6 +40,12 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh "echo \033[32m I am not too good at testing yet."
+       }
+    }
+
     stage('Deploy') {
       steps {
         sh "echo \033[33m Deploy ${ECR_REPOSITORY}:${BUILD_NUMBER} to AWS ECR \033[0m"
